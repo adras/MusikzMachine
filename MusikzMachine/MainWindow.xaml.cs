@@ -34,26 +34,32 @@ namespace MusikzMachine
 
         private void InitializeKeyboardButtons()
         {
-            int notesPerOctave = 12;
+
+
+            int notesPerOctave = 8;
             int octaves = 4;
             int numButtons = notesPerOctave * octaves;
 
             spKeys.Children.Clear();
 
+            double currentFrequency = 440;
+
             for (int i = 0; i < numButtons; i++)
             {
-                Button newButton = CreateButton(440);
+                Button newButton = CreateButton(currentFrequency);
                 spKeys.Children.Add(newButton);
+
+                currentFrequency += currentFrequency * Intervals.quart;
             }
         }
 
         private Button CreateButton(double frequency)
         {
-            SignalGenWaveOut waveOut = SignalGenWaveOutFactory.Create(440);
+            SignalGenWaveOut waveOut = SignalGenWaveOutFactory.Create(frequency);
             WaveOutContainer.instance.Value.AddWaveOut(waveOut);
 
             Button newButton = new Button();
-            newButton.Content = "X";
+            newButton.Content = frequency.ToString();
             newButton.Tag = waveOut;
 
 

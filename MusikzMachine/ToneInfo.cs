@@ -17,11 +17,11 @@ namespace MusikzMachine
     public class Intervals
     {
         // https://kilchb.de/muslekt1.php
-        public double octave = 2 / 1;
-        public double sixth = 8 / 5;
-        public double quint = 3 / 2;
-        public double quart = 4 / 3;
-        public double third = 5 / 4;
-        public double unision = 1 / 1;
+        public static double octave = 2.0 / 1;
+        public static double sixth = 8.0 / 5;
+        public static double quint = 3.0 / 2;
+        public static double quart = 4.0 / 3;
+        public static double third = 5.0 / 4;
+        public static double unision = 1.0 / 1;
     }
 }
