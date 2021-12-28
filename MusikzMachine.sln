@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.31911.260
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusikzMachine", "MusikzMachine\MusikzMachine.csproj", "{522643C6-D288-4919-B53F-A6796E6DA063}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusikzMachine", "MusikzMachine\MusikzMachine.csproj", "{522643C6-D288-4919-B53F-A6796E6DA063}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NAudio", "NAudio", "{2AF1A64F-A347-4744-8A82-F665DBD3BC56}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NAudio.Core", "NAudio\NAudio.Core\NAudio.Core.csproj", "{42ED717A-4CA2-483A-90D5-294E16886D67}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +19,16 @@ Global
 		{522643C6-D288-4919-B53F-A6796E6DA063}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{522643C6-D288-4919-B53F-A6796E6DA063}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{522643C6-D288-4919-B53F-A6796E6DA063}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42ED717A-4CA2-483A-90D5-294E16886D67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42ED717A-4CA2-483A-90D5-294E16886D67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42ED717A-4CA2-483A-90D5-294E16886D67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42ED717A-4CA2-483A-90D5-294E16886D67}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{42ED717A-4CA2-483A-90D5-294E16886D67} = {2AF1A64F-A347-4744-8A82-F665DBD3BC56}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {62563CBC-5760-499B-B703-60488B0B54A0}

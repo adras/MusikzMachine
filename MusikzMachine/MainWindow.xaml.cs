@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NAudio.Wave;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,12 +21,16 @@ namespace MusikzMachine
     /// </summary>
     public partial class MainWindow : Window
     {
+        WaveOut waveOut;
+
 
         public MainWindow()
         {
             InitializeComponent();
             InitializeKeyboardButtons();
         }
+
+
 
         private void InitializeKeyboardButtons()
         {
@@ -44,9 +49,13 @@ namespace MusikzMachine
 
         private Button CreateButton(double frequency)
         {
+            SignalGenWaveOut waveOut = SignalGenWaveOutFactory.Create(440);
+            WaveOutContainer.instance.Value.AddWaveOut(waveOut);
+
             Button newButton = new Button();
             newButton.Content = "X";
-            newButton.Tag = new ToneInfo { frequency = frequency };
+            newButton.Tag = waveOut;
+
 
             newButton.Width = 80;
             newButton.Height = 150;
@@ -60,7 +69,13 @@ namespace MusikzMachine
             if (sender is not Button senderButton)
                 return;
 
+            SignalGenWaveOut waveOut = senderButton.Tag as SignalGenWaveOut;
+            waveOut.WaveOut.Play();
+        }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            WaveOutContainer.instance.Value.StopAll();
         }
     }
 }
