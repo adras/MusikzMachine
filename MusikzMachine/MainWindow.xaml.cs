@@ -36,20 +36,28 @@ namespace MusikzMachine
         {
 
 
-            int notesPerOctave = 8;
-            int octaves = 4;
-            int numButtons = notesPerOctave * octaves;
+            //int notesPerOctave = 8;
+            //int octaves = 4;
+            //int numButtons = notesPerOctave * octaves;
 
-            spKeys.Children.Clear();
+            //spKeys.Children.Clear();
 
-            double currentFrequency = 440;
+            //double currentFrequency = 440;
 
-            for (int i = 0; i < numButtons; i++)
+            //for (int i = 0; i < numButtons; i++)
+            //{
+            //    Button newButton = CreateButton(currentFrequency);
+            //    spKeys.Children.Add(newButton);
+
+            //    currentFrequency += currentFrequency * Intervals.quart;
+            //}
+
+            double[] frequencies = new double[] { 264, 297,330, 352, 396, 440, 495, 528 };
+            for (int i = 0; i < frequencies.Length; i++)
             {
-                Button newButton = CreateButton(currentFrequency);
+                Button newButton = CreateButton(frequencies[i]);
                 spKeys.Children.Add(newButton);
 
-                currentFrequency += currentFrequency * Intervals.quart;
             }
         }
 
@@ -65,12 +73,25 @@ namespace MusikzMachine
 
             newButton.Width = 80;
             newButton.Height = 150;
-            newButton.Click += KeyboardKey_Pressed;
+            // https://stackoverflow.com/questions/33693676/mousedown-up-events-not-working-properly-in-wpf
+            newButton.PreviewMouseDown += NewButton_MouseDown;
+            newButton.PreviewMouseUp += NewButton_MouseUp;
+            //newButton.MouseLeftButtonDown += NewButton_MouseDown;
+            //newButton.MouseLeftButtonUp += NewButton_MouseUp;
 
             return newButton;
         }
 
-        private void KeyboardKey_Pressed(object sender, RoutedEventArgs e)
+        private void NewButton_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            if (sender is not Button senderButton)
+                return;
+
+            SignalGenWaveOut waveOut = senderButton.Tag as SignalGenWaveOut;
+            waveOut.WaveOut.Stop();
+        }
+
+        private void NewButton_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (sender is not Button senderButton)
                 return;
@@ -78,6 +99,7 @@ namespace MusikzMachine
             SignalGenWaveOut waveOut = senderButton.Tag as SignalGenWaveOut;
             waveOut.WaveOut.Play();
         }
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

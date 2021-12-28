@@ -20,6 +20,7 @@
             <Button Width="25" Height="150">D</Button>
             <Button Width="25" Height="150">E</Button>
             <Button Width="25" Height="150">F</Button>
+            
         </StackPanel>
     </Grid>
 </Window>
